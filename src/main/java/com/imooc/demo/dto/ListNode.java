@@ -1,7 +1,7 @@
 package com.imooc.demo.dto;
 //111我没了你你你我可是主分支哦哈哈嘤嘤嘤
 public class ListNode {
-    //ceshi我也没了我我我我是不重要的分支yingy9ingying
+    //ceshi我也没了我我我我是不重要的分支yingy9ingying111
     int val;
 
     ListNode next;
@@ -9,5 +9,5 @@ public class ListNode {
     ListNode(int x){
         val = x;
     }
-
+    //我要追加
 }
