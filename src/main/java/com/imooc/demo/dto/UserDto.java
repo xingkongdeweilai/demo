@@ -1,10 +1,12 @@
 package com.imooc.demo.dto;
 
-public class UserDto {
+import java.io.Serializable;
+
+public class UserDto implements Serializable, Cloneable {
     /**
      * ID
      */
-    private String id;
+    private transient String id;
 
     /**
      * 登陆名
@@ -20,6 +22,19 @@ public class UserDto {
      * 密码
      */
     private String password;
+
+    /**
+     * 恋爱对象
+     */
+    private UserDto loveObject;
+
+    public UserDto getLoveObject() {
+        return loveObject;
+    }
+
+    public void setLoveObject(UserDto loveObject) {
+        this.loveObject = loveObject;
+    }
 
     public String getId() {
         return id;
@@ -55,12 +70,18 @@ public class UserDto {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("UserDto{");
-        sb.append("id='").append(id).append('\'');
-        sb.append(", loginName='").append(loginName).append('\'');
-        sb.append(", name='").append(name).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "UserDto{" +
+                "id='" + id + '\'' +
+                ", loginName='" + loginName + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", loveObject=" + loveObject +
+                '}';
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     @Override
