@@ -4,11 +4,11 @@ import java.sql.*;
 
 public class MainTest {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabook" +
-                "?user=xiaoK&password=LJYX97010208&useUnicode=true&characterEncoding=utf8&autoReconnect=true");
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("select * from student");
+                "?user=xiaoK&password=LJYX97010208&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
+        PreparedStatement preparedStatement = connection.prepareStatement("select * from student");
+        ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             System.out.println(
                     resultSet.getString(1) + " " +
@@ -22,5 +22,7 @@ public class MainTest {
                     resultSet.getString(9)
             );
         }
+        DatabaseMetaData databaseMetaData = connection.getMetaData();
+        System.out.println(databaseMetaData.getDatabaseProductName());
     }
 }
